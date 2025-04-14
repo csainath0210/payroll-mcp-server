@@ -86,6 +86,7 @@ For custom authentication needs, you can modify the `src/api.ts` file.
 - `view-all-people`: View all people with optional filtering and pagination (supports both API authentication with authId/authKey or Partner authentication with partnerKey/clientKey)
 - `getEmployeeInfo`: A simplified employee information retrieval tool that returns basic employee data (name, department, role) based on employee ID
 - `calculatePayroll`: Calculate payroll for an employee based on hours worked and hourly rate (computes gross pay, 20% tax, and net pay)
+- `get-run-payroll`: Get payroll information with filtering and pagination options (supports filtering by month, departments, locations, and status)
 
 ## Available Interfaces
 
