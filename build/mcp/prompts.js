@@ -35,6 +35,8 @@ server.prompt("help", "Provides help information about available commands", asyn
                         "- Viewing information about specific people (use 'view-people')\n" +
                         "- Viewing all people with filtering options (use 'view-all-people')\n" +
                         "- Getting payroll information with filtering options (use 'get-run-payroll')\n" +
+                        "- Finalizing payroll for a month (use 'finalize-payroll')\n" +
+                        "- Unfinalizing payroll for a month (use 'unfinalize-payroll')\n" +
                         "- Getting help (use 'help')\n\n" +
                         "Just let me know what you'd like to do!"
                 }
