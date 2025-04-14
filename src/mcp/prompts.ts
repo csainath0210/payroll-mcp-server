@@ -49,7 +49,6 @@ server.prompt(
           text: "I can help you with:\n" +
             "- Viewing information about specific people (use 'view-people')\n" +
             "- Viewing all people with filtering options (use 'view-all-people')\n" +
-            "- Getting payroll information with filtering options (use 'get-run-payroll')\n" +
             "- Getting help (use 'help')\n\n" +
             "Just let me know what you'd like to do!"
         }

@@ -1,7 +1,0 @@
-{
-    "mcpServers": {
-      "payroll-mcp": {
-        "url": "http://localhost:8089/sse"
-      }
-    }
-  }
