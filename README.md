@@ -38,10 +38,8 @@ cp .env.example .env
 
 4. Update the `.env` file with your API configuration:
 
-```
-# API configuration
-BASE_URL=http://app.localopfin.com
-PORT=8089
+```bash
+cp .env.example .env
 ```
 
 ## Running the Server
@@ -87,6 +85,8 @@ For custom authentication needs, you can modify the `src/api.ts` file.
 - `getEmployeeInfo`: A simplified employee information retrieval tool that returns basic employee data (name, department, role) based on employee ID
 - `calculatePayroll`: Calculate payroll for an employee based on hours worked and hourly rate (computes gross pay, 20% tax, and net pay)
 - `get-run-payroll`: Get payroll information with filtering and pagination options (supports filtering by month, departments, locations, and status)
+- `finalize-payroll`: Finalize payroll for a specific month (requires payroll_month in YYYY-MM-DD format)
+- `unfinalize-payroll`: Unfinalize payroll for a specific month (requires payroll_month in YYYY-MM-DD format)
 
 ## Available Interfaces
 
