@@ -190,4 +190,75 @@ server.tool("get-run-payroll", "Get payroll information with filtering and pagin
         };
     }
 });
+
+// Finalize Payroll tool
+server.tool("finalize-payroll", "Finalize payroll for a specific month", {
+    payroll_month: z.string().describe("Payroll month in YYYY-MM-DD format")
+}, async (args) => {
+    try {
+        const response = await fetch("http://app.localopfin.com/v2/api/run-payroll/finalize", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(args)
+        });
+
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+
+        const data = await response.json();
+        return {
+            content: [{
+                type: "text",
+                text: JSON.stringify(data)
+            }]
+        };
+    } catch (error) {
+        return {
+            content: [{
+                type: "text",
+                text: "Failed to finalize payroll"
+            }],
+            isError: true
+        };
+    }
+});
+
+// Unfinalize Payroll tool
+server.tool("unfinalize-payroll", "Unfinalize payroll for a specific month", {
+    payroll_month: z.string().describe("Payroll month in YYYY-MM-DD format")
+}, async (args) => {
+    try {
+        const response = await fetch("http://app.localopfin.com/v2/api/run-payroll/unfinalize", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(args)
+        });
+
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+
+        const data = await response.json();
+        return {
+            content: [{
+                type: "text",
+                text: JSON.stringify(data)
+            }]
+        };
+    } catch (error) {
+        return {
+            content: [{
+                type: "text",
+                text: "Failed to unfinalize payroll"
+            }],
+            isError: true
+        };
+    }
+});
+
 //# sourceMappingURL=tools.js.map
