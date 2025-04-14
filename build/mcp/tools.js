@@ -161,7 +161,7 @@ server.tool("get-run-payroll", "Get payroll information with filtering and pagin
     ]).optional().describe("Filter by status")
 }, async (args) => {
     try {
-        const response = await fetch("http://app.localopfin.com/v2/api/get-run-payroll", {
+        const response = await fetch("http://app.localopfin.com/api/get-run-payroll", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -196,7 +196,7 @@ server.tool("finalize-payroll", "Finalize payroll for a specific month", {
     payroll_month: z.string().describe("Payroll month in YYYY-MM-DD format")
 }, async (args) => {
     try {
-        const response = await fetch("http://app.localopfin.com/v2/api/run-payroll/finalize", {
+        const response = await fetch("http://app.localopfin.com/api/run-payroll/finalize", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -231,7 +231,7 @@ server.tool("unfinalize-payroll", "Unfinalize payroll for a specific month", {
     payroll_month: z.string().describe("Payroll month in YYYY-MM-DD format")
 }, async (args) => {
     try {
-        const response = await fetch("http://app.localopfin.com/v2/api/run-payroll/unfinalize", {
+        const response = await fetch("http://app.localopfin.com/api/run-payroll/unfinalize", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"

@@ -80,7 +80,16 @@ For custom authentication needs, you can modify the `src/api.ts` file.
 
 ## Available Tools
 
+- `create-people`: Create a new employee or contractor in RazorpayX Payroll (requires authId and authKey authentication)
+- `edit-people`: Edit details of an employee or contractor (requires authId and authKey authentication)
+- `set-salary`: Set annual salary structure for an employee (requires authId and authKey authentication)
+- `dismiss-people`: Dismiss an employee or contractor (requires authId and authKey authentication)
+- `modify-attendance`: Manage employee attendance, check-in/out times, and leaves (requires authId and authKey authentication)
 - `view-people`: View information about a specific person using employee ID (requires authId and authKey authentication)
+- `view-payroll`: View payroll information for an employee for a specific month (requires authId and authKey authentication)
+- `add-payroll-additions`: Add bonuses, incentives, and other additions to an employee's payroll (requires authId and authKey authentication)
+- `add-payroll-deductions`: Add deductions to an employee's payroll by amount or days (requires authId and authKey authentication)
+- `toggle-payroll`: Pause or resume an employee's payroll for a specific month (requires authId and authKey authentication)
 - `view-all-people`: View all people with optional filtering and pagination (supports both API authentication with authId/authKey or Partner authentication with partnerKey/clientKey)
 - `getEmployeeInfo`: A simplified employee information retrieval tool that returns basic employee data (name, department, role) based on employee ID
 - `calculatePayroll`: Calculate payroll for an employee based on hours worked and hourly rate (computes gross pay, 20% tax, and net pay)
