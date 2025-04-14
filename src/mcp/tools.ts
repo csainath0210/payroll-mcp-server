@@ -162,3 +162,61 @@ server.tool(
     }
   }
 );
+
+// Get Run Payroll tool
+server.tool(
+  "get-run-payroll",
+  "Get payroll information with filtering and pagination",
+  {
+    payroll_month: z.string().describe("Payroll month in YYYY-MM-DD format"),
+    search_phrase: z.string().optional().describe("Search phrase to filter results"),
+    departments: z.array(z.string()).optional().describe("Filter by departments"),
+    locations: z.array(z.string()).optional().describe("Filter by locations"),
+    page: z.number().optional().describe("Page number for pagination"),
+    limit: z.number().optional().refine(val => !val || val <= 100, {
+      message: "Limit must be less than or equal to 100"
+    }).describe("Number of items per page (max 100)"),
+    order: z.object({
+      ORDER_BY_NAME: z.enum(["asc", "desc"]).optional(),
+      ORDER_BY_CANCELLED: z.enum(["asc", "desc"]).optional()
+    }).optional().describe("Sorting order"),
+    status_filter: z.enum([
+      "finalized",
+      "paid",
+      "skipped",
+      "net-pay-on-hold",
+      "gross-pay-on-hold"
+    ]).optional().describe("Filter by status")
+  },
+  async (args) => {
+    try {
+      const response = await fetch("http://app.localopfin.com/v2/api/get-run-payroll", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(args)
+      });
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+
+      const data = await response.json();
+      return {
+        content: [{
+          type: "text",
+          text: JSON.stringify(data)
+        }]
+      };
+    } catch (error) {
+      return {
+        content: [{
+          type: "text",
+          text: "Failed to fetch payroll information"
+        }],
+        isError: true
+      };
+    }
+  }
+);
