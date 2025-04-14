@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Speech to Text - Indian English</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        button {
+            padding: 10px 20px;
+            margin: 10px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+            border: none;
+            background-color: #4CAF50;
+            color: white;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        button:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            background-color: #cccccc;
+        }
+        #result {
+            margin-top: 20px;
+            padding: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            min-height: 100px;
+            max-height: 400px;
+            overflow-y: auto;
+        }
+        #result p {
+            margin: 5px 0;
+            padding: 5px;
+            border-bottom: 1px solid #eee;
+        }
+        .error {
+            color: #d32f2f;
+            background-color: #ffebee;
+            padding: 5px;
+            border-radius: 3px;
+        }
+        #status {
+            margin: 10px 0;
+            padding: 10px;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+        .instructions {
+            background-color: #e3f2fd;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>Speech to Text - Indian English</h1>
+    
+    <div class="instructions">
+        <h3>Instructions:</h3>
+        <ol>
+            <li>Click "Start Recording" when you're ready to speak</li>
+            <li>Speak clearly in English (optimized for Indian accent)</li>
+            <li>The recording will automatically stop after you finish speaking</li>
+            <li>Your text will appear below in the results section</li>
+        </ol>
+    </div>
+
+    <div id="status">Initializing...</div>
+    
+    <button id="startButton">Start Recording</button>
+    <button id="stopButton" disabled>Stop Recording</button>
+    
+    <div id="result"></div>
+
+    <script src="webSpeechExample.js"></script>
+    
+    <script>
+        // Check if the initialization worked
+        setTimeout(() => {
+            const status = document.getElementById('status');
+            if (status) {
+                if (!window.webkitSpeechRecognition && !window.SpeechRecognition) {
+                    status.textContent = 'Error: Speech Recognition not supported in this browser. Please use Chrome.';
+                    status.style.backgroundColor = '#ffebee';
+                } else {
+                    status.textContent = 'Ready to record!';
+                    status.style.backgroundColor = '#e8f5e9';
+                }
+            }
+        }, 1000);
+    </script>
+</body>
+</html> 
